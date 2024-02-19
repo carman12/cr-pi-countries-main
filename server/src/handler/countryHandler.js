@@ -1,5 +1,4 @@
 const {findAllCountrys, findCountrybyID, findCountrybyName} = require("../../controllers/findAll");
-const { Country, Activity } = require("../db");
 
 const getCountryHandler = async(req,res) =>{
 

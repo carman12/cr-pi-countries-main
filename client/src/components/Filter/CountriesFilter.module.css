@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "Promp personalizada";
+    src: url("../../Fuentes/Phudu/Phudu-VariableFont_wght.ttf");
+  }
+  :root {
+    --color-primary: #05090a;
+    --color-secondary: #1f4b56;
+    --color-therd: #62584c;
+    --color-light: #c5a58a;
+    --color-dark: #33a9bf;
+    --color-blue: rgba(28, 29, 49, 0.774);
+    --color-white: rgba(232, 219, 191, 0.813);
+  }
+  
+  .filters {
+    display: flex;
+    flex-direction: row;
+    width: 1500px;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 3px;
+  }
+  .select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    width: 90%;
+    cursor: pointer;
+    padding: 7px 50px;
+    height: 32px;
+    outline: 0;
+    border: 20%;
+    background: var(--color-secondary);
+    font-size: 13px;
+    color: white;
+    font-family: "Promp personalizada";
+    border: 1px solid var(--color-dark);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+    margin-right: 27px;
+    margin-top: 15px;
+  }
+  
+  .select select::-ms-expand {
+    display: none;
+  }
+  
+  .select:hover {
+    transform: translateY(
+      -3px
+    ); /* Mueve el botón hacia arriba al pasar el cursor */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5); /* Cambia la sombra al pasar el cursor */
+    color: var(--color-dark);
+    opacity: 1;
+    border: solid 1.5px var(--color-dark);
+  }

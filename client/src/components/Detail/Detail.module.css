@@ -1,0 +1,46 @@
+/* styles.css */
+
+.detail-container {
+    font-family: Arial, sans-serif; /* Cambia 'Arial' por la fuente que prefieras */
+    font-size: 16px; /* Tamaño de fuente base */
+    line-height: 1.5; /* Espaciado entre líneas */
+    color: #333; /* Color de texto */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Altura del viewport */
+  }
+  .content {
+    display: flex;
+    flex-direction: row; /* Apila los elementos horizontalmente */
+    width: 100%; /* Ocupa el 50% del ancho del contenedor */
+    
+  }
+  .half {
+    flex: 1; /* Divide el espacio disponible entre ambas partes */
+  }
+  
+  .detail-heading {
+    font-size: 24px; /* Tamaño de fuente para los títulos */
+    font-weight: bold; /* Negrita para los títulos */
+    margin-bottom: 10px; /* Espaciado inferior entre títulos */
+  }
+  
+  .detail-text {
+    margin-bottom: 5px; /* Espaciado inferior entre texto */
+  }
+  
+  .detail-image {
+    max-width: 100%; /* Ajustar imagen al ancho del contenedor */
+    height: 180; /* Mantener la proporción de aspecto */
+    margin-top: 20px; /* Espaciado superior para la imagen */
+  }
+  h1{
+    color: rgba(19, 197, 241, 0.859);
+  }
+  h2{
+    color: aliceblue;
+  }
+ p {
+  color: azure;
+ }

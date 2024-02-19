@@ -1,0 +1,111 @@
+:root {
+    --color-primary: #05090a;
+    --color-secondary: #1f4b56;
+    --color-therd: #62584c;
+    --color-light: #c5a58a;
+    --color-dark: #33a9bf;
+    --color-blue: rgba(28, 29, 49, 0.774);
+  
+  }
+  
+  .navBar {
+    margin-top: -12px;
+    width: 100%;
+    background-color: var(--color-secondary);
+    opacity: 0.7;
+    box-shadow: 0px 0px 10px rgba(46, 146, 212, 0.3),
+  
+  }
+  .navBar:hover {
+    opacity: 0.8;
+  }
+  
+  .search {
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 1320px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .filters {
+    width: 1230px;
+    margin-left: 125px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .backBtn {
+    position: absolute;
+    left: 0;
+    margin-right: 25px;
+    margin-left: 135px;
+    margin-top: -18px;
+    margin-bottom: -30px;
+    width: 75px;
+    height: 32px;
+    background-color: var(--color-secondary);
+    border: solid 1.5px var(--color-dark);
+    font-size: 10pt;
+    color: white;
+    padding-left: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    justify-content: center;
+    font-family: "Promp personalizada";
+    animation: pulse 2s infinite;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  }
+  
+  .backBtn:hover {
+    background-color: var(
+      --color-secondary
+    ); /* Cambia el color de fondo al pasar el cursor */
+    transform: translateY(
+      -3px
+    ); /* Mueve el botón hacia arriba al pasar el cursor */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Cambia la sombra al pasar el cursor */
+    color: white;
+  }
+  .activitiesBtn {
+    position: absolute;
+    left: 0;
+    margin-right: 525px;
+    margin-left: 1230px;
+    margin-top: -8px;
+    margin-bottom: -30px;
+    width: 95px;
+    height: 32px;
+    background-color: var(--color-secondary);
+    border: solid 1.5px var(--color-dark);
+    font-size: 10pt;
+    color: white;
+    padding-left: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 12px;
+    cursor: pointer;
+    justify-content: center;
+    font-family: "Promp personalizada";
+    animation: pulse 2s infinite;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  }
+  
+  .activitiesBtn:hover {
+    background-color: var(
+      --color-secondary
+    ); /* Cambia el color de fondo al pasar el cursor */
+    transform: translateY(
+      -3px
+    ); /* Mueve el botón hacia arriba al pasar el cursor */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Cambia la sombra al pasar el cursor */
+    color: white;
+  }

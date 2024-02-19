@@ -17,14 +17,16 @@ const createActivityHandler = async(req, res) => {
         name,
         dificultad,
         duracion,
-        temporada} = req.body;
+        temporada, 
+        CountryID} = req.body;
 
     try{    
         const response = await CrearActivity.createActivityDB(ID,
             name,
             dificultad,
             duracion,
-            temporada);
+            temporada, 
+            CountryID);
     res.status(200).json(response)
 }catch(error){
     res.status(500).json({error:error.message});

@@ -1,0 +1,11 @@
+.password-input {
+    padding-right: 30px; /* Asegura que el icono no se superponga con el texto */
+    background-image: url('../../img/cerrar-ojo.png'); /* Ruta a tu ícono de ojo */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px; /* Ajusta el tamaño del ícono según sea necesario */
+  }
+
+  .password-input[type="password"] {
+    background-image: none; /* Oculta el ícono cuando la contraseña está oculta */
+  }

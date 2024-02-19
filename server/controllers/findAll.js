@@ -11,7 +11,16 @@ const findAllCountrys = async () => {
 };
 const findAllActivity = async () => {
   try {
-    const activities = await Activity.findAll();
+    const activities = await Activity.findAll({
+      include: [
+        {    
+          model: Country,
+          as: "Countries",
+          attributes: ["name", "flags", "id"],
+          through: { attributes: [] },
+        },
+      ],
+    });
     return activities;
   } catch (error) {
     throw new Error(`Error al buscar las actividades: ${error.message}`);
@@ -20,8 +29,8 @@ const findAllActivity = async () => {
 
 
 const findCountrybyID = async (id) => {
-  const countryID = await Country.findOne({
-    where: { id: { [Op.iLike]: id } },
+  const countryID = await Country.findOne({ 
+    where: { id: id }, include: [Activity], 
   });
   if (!countryID) throw new Error("No hay país con ese id");
   return countryID;
@@ -30,7 +39,7 @@ const findCountrybyID = async (id) => {
 const findCountrybyName = async (name) => {
     console.log(`Este name es: ${name}`);
     const countryName = await Country.findOne({
-      where: { name: { [Op.iLike]: name } },
+      where: { name: { [Op.iLike]: `%${name}%` } },
     });
     if (!countryName) throw new Error(`No hay país con el nombre : ${name}`);
     return countryName;

@@ -1,0 +1,26 @@
+.content {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  width: 1200vh;
+
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  height: 40px;
+  width:  600px;
+  
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column-reverse; /* Cambia el orden de las cartas a descendente */
+  align-items: center; /* Alinea las cartas al centro verticalmente */
+}
+.card {
+  /* Estilos de cada tarjeta */
+  margin: 10px; /* Márgenes entre las tarjetas */
+}

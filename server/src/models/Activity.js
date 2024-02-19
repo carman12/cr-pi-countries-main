@@ -9,6 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
+      unique : true,
     },
     name: {
       type: DataTypes.STRING,
@@ -24,9 +25,11 @@ module.exports = (sequelize) => {
     },
     duracion: {
       type: DataTypes.INTEGER,
+      validate: { min: 0 },
     },
     temporada: {
       type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
+      allowNull: false,
     },
   });
     return  Activity ;

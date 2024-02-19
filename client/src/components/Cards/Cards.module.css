@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    /* grid-template-columns: repeat(5, 1fr);
+    gap: 10px; */
+    flex-wrap: wrap;
+    width: 1200px;
+    height: 50px;
+    justify-content: space-between;
+  }
+  .button {
+    width: 125px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .card {
+    /* Estilos de cada tarjeta */
+    margin: 10px; /* Márgenes entre las tarjetas */
+  }

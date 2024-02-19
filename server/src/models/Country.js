@@ -7,7 +7,11 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.STRING(3),
       primaryKey: true,
+      unique: true,
       allowNull: false,
+      validate: {
+        is: /^[A-Za-z]{3}$/,
+      },
     },
     name: {
       type: DataTypes.STRING,
@@ -23,8 +27,8 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     capital: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      //allowNull: false,
     },
     subregion: {
       type: DataTypes.STRING,

@@ -17,7 +17,7 @@ const envioDB = async (req, res) => {
           name: country.name && country.name.common,
           flags: country.flags && country.flags.png,
           continents: country.continents && country.continents[0],
-          capital: country.capital?.length ? country.capital[0] : 'Sin capital definida',
+          capital: country.capital?.length ? country.capital : ['No Found'],
           subregion: country.subregion,
           area: country.area,
           population: country.population,

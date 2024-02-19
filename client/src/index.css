@@ -25,10 +25,28 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: 50%; /* Reduce el ancho a la mitad */
+  height: auto; /* Mantiene la proporción de aspecto */
+  z-index: -1000; /* Coloca el video detrás de todo el contenido */
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del video */
+  padding: 20px;
 }
 
 h1 {

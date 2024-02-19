@@ -4,7 +4,7 @@ const { conn } = require('./src/db.js');
 const { envioDB } = require("./startDB/chargeBD.js")
 const PORT = 3001;
 
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   // Llamada a envioDB para cargar los datos en la base de datos
 envioDB()
 .then(() => {
