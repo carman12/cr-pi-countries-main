@@ -34,32 +34,35 @@ function DetailPage() {
   }, [id]);
   return (
     <div>
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <div className={styles.half}>
-          <div className={styles.wave}>
-            <img
-              src={countries?.flags}
-              alt={countries?.flags}
-              height={350}
-              width={300}
-            />
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.half}>
+            <div className={styles.wave}>
+              <img
+                src={countries?.flags}
+                alt={countries?.flags}
+                height={350}
+                width={300}
+              />
+            </div>
+            <Link to={"/home"}>
+              <button>Atras</button>
+            </Link>
           </div>
-        </div>
-        <div className={styles.half}>
-          <h1>{countries?.name}</h1>
-          <h2>ACRONIMO: {countries?.id}</h2>
-          <h2>CONTINENTE: {countries?.continents}</h2>
-          <h2>AREA: {countries?.area}</h2>
-          <h2>CAPITALES:</h2>
-          {countries?.capital &&
-            countries.capital.map((capital, index) => (
-              <h2 key={index}>{capital}</h2>
-            ))}
-          <h2>SUBREGION: {countries?.subregion}</h2>
-          <h2>POBLACION: {countries?.population}</h2>
-        </div>
-        <div className={styles.activities}>
+          <div className={styles.half}>
+            <h1>{countries?.name}</h1>
+            <h2>ACRONIMO: {countries?.id}</h2>
+            <h2>CONTINENTE: {countries?.continents}</h2>
+            <h2>AREA: {countries?.area}</h2>
+            <h2>CAPITALES:</h2>
+            {countries?.capital &&
+              countries.capital.map((capital, index) => (
+                <h2 key={index}>{capital}</h2>
+              ))}
+            <h2>SUBREGION: {countries?.subregion}</h2>
+            <h2>POBLACION: {countries?.population}</h2>
+          </div>
+          <div className={styles.activities}>
             <h2>ACTIVIDADES: </h2>
             {countries?.Activities && countries.Activities.length > 0 ? (
               countries.Activities.map((Activities, index) => (
@@ -81,8 +84,8 @@ function DetailPage() {
               </Link>
             )}
           </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

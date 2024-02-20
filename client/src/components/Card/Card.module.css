@@ -7,7 +7,7 @@
     text-align: center;
     transition: all 0.3s ease;
     border-radius:0px 0px 8px 40px;
-    background-color: rgba(148, 87, 235, 0.3);
+    background-color: rgba(87, 223, 235, 0.3);
   }
   .container:hover {
     box-shadow: 0px 0px 25px 0px rgb(190, 187, 18);
@@ -15,7 +15,7 @@
   }
   .flag {
     width: 320px;
-    height: 213px;
+    height: 160px;
     border-radius: 50px;
   }
   .text {
@@ -23,5 +23,8 @@
     max-height: 100px;
   }
 h3{
+  color: aliceblue;
+}
+h2{
   color: aliceblue;
 }

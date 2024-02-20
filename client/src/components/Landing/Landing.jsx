@@ -8,7 +8,7 @@ function LandingPage() {
     <div className={styles.contentLanding}>
       <h1>Guía para actividades en paises</h1>      
       <Link to="/home">
-        <button>Enter</button>
+        <button>Entrar</button>
       </Link>
     </div>
   );

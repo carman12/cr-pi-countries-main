@@ -9,30 +9,23 @@ import {
   FILTER_CONTINENT,
   ORDER_DURATION,
   CLEAN_COUNTRY,
+  CLEAN_ACTIVITY,
 } from "./action-types";
 
 const initialState = {
   allCountries: [],
   countries: [],
-  countryDetail: [],
+  countryDetail: null, // Cambié esto a null en lugar de un array vacío para indicar que no hay detalles de país seleccionado por defecto
   activities: [],
   allActivities: [],
 };
 
 const reducer = (state = initialState, action) => {
-  let orderedCountriesByContinent = [...state.countries];
-  let orderedCountriesByPopulation = [...state.countries];
-  let contientCountries = state.allCountries.filter(
-    (country) => country.continent === action.payload
-  );
-  let orderedActivitiesByDuration = [...state.activities];
-  
-
   switch (action.type) {
     case CLEAN_COUNTRY:
       return {
         ...state,
-        country: action.payload, // Limpia los detalles del país
+        countryDetail: null, // Limpia los detalles del país estableciéndolo como null
       };
     case GET_COUNTRIES:
       return {
@@ -40,101 +33,86 @@ const reducer = (state = initialState, action) => {
         countries: action.payload,
         allCountries: action.payload,
       };
-
     case GET_DETAIL:
+      console.log(action.payload);
       return {
         ...state,
         countryDetail: action.payload,
       };
-
     case GET_BY_NAME:
       return {
         ...state,
         countries: action.payload,
       };
-
     case CREATE_ACTIVITY:
       return {
         ...state,
         activities: [...state.activities, action.payload],
         allActivities: [...state.allActivities, action.payload],
       };
-
     case GET_ACTIVITIES:
       return {
         ...state,
         activities: action.payload,
         allActivities: action.payload,
       };
-
     case ORDER_ALPHABETICALLY:
-      
-        orderedCountriesByContinent.sort((a, b) => {
-          if (a.name > b.name) return 1;
-          else if (a.name < b.name) return -1;
-          else return 0;
-        });
+      const orderedCountriesByAlphabet = [...state.countries];
+      orderedCountriesByAlphabet.sort((a, b) => {
         if (action.payload === "D") {
-          orderedCountriesByContinent.sort((a, b) => {
-            if (a.name < b.name) return 1;
-            else if (a.name > b.name) return -1;
-            else return 0;
-          });
-      }
+          return b.name.localeCompare(a.name); // Orden descendente
+        } else {
+          return a.name.localeCompare(b.name); // Orden ascendente
+        }
+      });
       return {
         ...state,
-        countries: orderedCountriesByContinent,
-        allCountries: orderedCountriesByContinent
+        countries: orderedCountriesByAlphabet,
+        allCountries: orderedCountriesByAlphabet, // Aplicar ordenamiento a todos los países
       };
-
     case ORDER_POPULATION:
-      if (action.payload === "A") {
-        orderedCountriesByPopulation.sort((a, b) => {
-          if (Number(a.population) > Number(b.population)) return 1;
-          else if (Number(a.population) < Number(b.population)) return -1;
-          else return 0;
-        });
-      } else if (action.payload === "D") {
-        orderedCountriesByPopulation.sort((a, b) => {
-          if (Number(a.population) < Number(b.population)) return 1;
-          else if (Number(a.population) > Number(b.population)) return -1;
-          else return 0;
-        });
-      }
+      const orderedCountriesByPopulation = [...state.countries];
+      orderedCountriesByPopulation.sort((a, b) => {
+        if (action.payload === "D") {
+          return b.population - a.population; // Orden descendente
+        } else {
+          return a.population - b.population; // Orden ascendente
+        }
+      });
       return {
         ...state,
         countries: orderedCountriesByPopulation,
+        allCountries: orderedCountriesByPopulation, // Aplicar ordenamiento a todos los países
       };
-
     case FILTER_CONTINENT:
+      const continentCountries = state.allCountries.filter(
+        (country) => country.continent === action.payload
+      );
       return {
         ...state,
-        countries: contientCountries,
+        countries: continentCountries,
       };
-
     case ORDER_DURATION:
-      if (action.payload === "A") {
-        orderedActivitiesByDuration.sort((a, b) => {
-          if (a.duration > b.duration) return 1;
-          else if (a.duration < b.duration) return -1;
-          else return 0;
-        });
-      } else if (action.payload === "D") {
-        orderedActivitiesByDuration.sort((a, b) => {
-          if (a.duration < b.duration) return 1;
-          else if (a.duration > b.duration) return -1;
-          else return 0;
-        });
-      }
+      const orderedActivitiesByDuration = [...state.activities];
+      orderedActivitiesByDuration.sort((a, b) => {
+        if (action.payload === "D") {
+          return b.duration - a.duration; // Orden descendente
+        } else {
+          return a.duration - b.duration; // Orden ascendente
+        }
+      });
       return {
         ...state,
-        activities: orderedActivitiesByDuration
+        activities: orderedActivitiesByDuration,
+        allActivities: orderedActivitiesByDuration, // Aplicar ordenamiento a todas las actividades
       };
-
+    case CLEAN_ACTIVITY:
+      return {
+        ...state,
+        activities: [], // Limpia las actividades estableciéndolas como un array vacío
+      };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 

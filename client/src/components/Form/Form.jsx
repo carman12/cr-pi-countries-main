@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Form.module.css";
 import paises from "./paises";
 import Nav from "../Nav/Nav";
+import { Link } from "react-router-dom";
 
 function Form() {
   const [activity, setActivity] = useState({
@@ -91,9 +92,9 @@ function Form() {
   return (
     <div className="formulario">
       <form onSubmit={handleSubmit}>
-        <h2 className="tracking-in-expand">Create your activity</h2>
+        <h2 className="tracking-in-expand">Crea tu actividad</h2>
         <div className="item">
-          <label htmlFor="name">Name Activity </label>
+          <label htmlFor="name">Nombre Actividad* </label>
           <input
             id="name"
             type="text"
@@ -106,7 +107,7 @@ function Form() {
           </div>
         </div>
         <div className="item">
-          <label htmlFor="dificultad">Dificultad </label>
+          <label htmlFor="dificultad">Dificultad* </label>
           <input
             id="dificultad"
             type="text"
@@ -119,7 +120,7 @@ function Form() {
           </div>
         </div>
         <div className="item">
-          <label htmlFor="duracion">Duración (Horas) </label>
+          <label htmlFor="duracion">Duración (Horas)* </label>
           <input
             id="duracion"
             type="text"
@@ -132,7 +133,7 @@ function Form() {
           </div>
         </div>
         <div className="item">
-          <label htmlFor="temporada">Temporada </label>
+          <label htmlFor="temporada">Temporada* </label>
           <input
             id="temporada"
             type="text"
@@ -145,7 +146,8 @@ function Form() {
           </div>
         </div>
         <div className="teams">
-          <p>Select teams with control + click in the team and submit</p>
+          <p>("*") Campos obligatorios</p>
+          <p>Seleccione los paises usando solo el click</p>
           <label htmlFor="CountryID">Paises</label>
           <select
             id="CountryID"
@@ -174,8 +176,13 @@ function Form() {
         </div>
         <div className="but">
           <button type="submit" className="button">
-            Submit
+            Enviar
           </button>
+          <Link to="/home">
+                <button className="button">
+                  Atras
+                </button>
+          </Link>
         </div>
       </form>
     </div>

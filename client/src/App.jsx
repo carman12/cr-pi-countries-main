@@ -3,6 +3,7 @@ import "./App.css";
 import LandingPage from "./components/Landing/Landing";
 import HomePage from "./components/Home/Home";
 import Detail from "./components/Detail/DetailPage";
+import Error404 from "./components/Error/Error.jsx";
 import Form from "./components/Form/Form";
 import { useEffect } from "react";
 import { getCountries, orderAlphabetically } from "./redux/actions";
@@ -27,7 +28,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/countries/id/:id" element={<Detail />} />
-        /* <Route path="/form" element={<Form />} /> */
+        <Route path="/form" element={<Form />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

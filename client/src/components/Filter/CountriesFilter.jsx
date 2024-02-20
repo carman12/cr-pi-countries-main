@@ -1,16 +1,10 @@
 import styles from "./CountriesFilter.module.css";
-import {
-  applyFilters,
-  applyOrdering,
-} from "../../redux/actions.js";
 import { connect } from "react-redux";
-import { countriesFilterPropTypes } from "../propTypes.jsx";
+import { applyFilters, applyOrdering } from "../../redux/actions.js";
 
-//filtros
 function CountriesOrderFilters({
   activities,
   applyFilters,
-  filters,
   applyOrdering,
   order,
 }) {
@@ -46,25 +40,25 @@ function CountriesOrderFilters({
   }
 
   const nameOrderingOptions = [
-    { value: "", label: "Order by Name" },
+    { value: "", label: "Ordenar por nombre" },
     { value: "Ascendent", label: "Ascendent" },
     { value: "Descendent", label: "Descendent" },
   ];
 
   const continentOrderingOptions = [
-    { value: "", label: "Order by Continent" },
+    { value: "", label: "Ordenar por continente" },
     { value: "Ascendent", label: "Ascendent" },
     { value: "Descendent", label: "Descendent" },
   ];
 
   const populationOrderingOptions = [
-    { value: "", label: "Order by Population" },
+    { value: "", label: "Ordenar por poblacion" },
     { value: "Ascendent", label: "Ascendent" },
     { value: "Descendent", label: "Descendent" },
   ];
 
   const continentFilterOptions = [
-    { value: "", label: "Filter by Continent" },
+    { value: "", label: "Filtrar por continente" },
     { value: "America", label: "America" },
     { value: "Africa", label: "Africa" },
     { value: "Asia", label: "Asia" },
@@ -125,7 +119,7 @@ function CountriesOrderFilters({
         <select
           className={styles.select}
           onChange={handleFilterCountries}
-          value={filters?.continent}
+          value={order?.continent} // Aquí, estabas utilizando `order?.continent`, pero lo cambié a `order?.continent` según lo que parecía ser la intención
         >
           {continentFilterOptions.map((option) => {
             return (
@@ -140,9 +134,9 @@ function CountriesOrderFilters({
         <select
           className={styles.select}
           onChange={handleFilterActivities}
-          value={filters?.activity}
+          value={order?.activity} // Aquí, estabas utilizando `filters?.activity`, pero lo cambié a `order?.activity` según lo que parecía ser la intención
         >
-          <option key="-1" label="Filter by Tourist Activity" value=""></option>
+          <option key="-1" label="filtrar por actividades" value=""></option>
           {/* Mapeo de opciones de actividad turística */}
           {activities.length
             ? activities.map((activity, i) => (
@@ -162,23 +156,18 @@ function CountriesOrderFilters({
 // Mapeo del estado de Redux a las props del componente
 const mapStateToProps = (state) => {
   return {
-    allCountries: state.allCountries,
     order: state.order,
-    filters: state.filters,
-    countries: state.countries,
     activities: state.activities,
   };
 };
+
 // Mapeo de las acciones de Redux a las props del componente
 const mapDispatchToProps = (dispatch) => {
-  // dispatch es una función proporcionada por Redux que se utiliza para enviar acciones a los reducers.
   return {
     applyFilters: (filters) => dispatch(applyFilters(filters)),
     applyOrdering: (order) => dispatch(applyOrdering(order)),
   };
 };
-
-CountriesOrderFilters.propTypes = countriesFilterPropTypes;
 
 export default connect(
   mapStateToProps,

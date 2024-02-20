@@ -36,11 +36,14 @@ export function cleanCountry() {
 
 export const getDetail = (id) => {
   return async (dispatch) => {
-    const { data } = await axios.get(`http://localhost:3001/countries/id/${id}`);
-    dispatch({ type: GET_DETAIL, payload: data });
+    try {
+      const { data } = await axios.get(`http://localhost:3001/countries/id/${id}`);
+      dispatch({ type: GET_DETAIL, payload: data });
+    } catch (error) {
+      console.error("Error fetching country details:", error);
+    }
   };
 };
-
 // Acción para ordenar países
 export function orderCountries(orderTarget, criteria) {
   return async (dispatch) => {
@@ -61,9 +64,8 @@ export const getName = (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/countries/name?name=${name}`
+        `http://localhost:3001/countries/name/${name}`
       );
-
       dispatch({ type: GET_BY_NAME, payload: data });
     } catch (error) {
       console.log(error);
@@ -85,6 +87,37 @@ export function filterCountries(orderTarget, criteria) {
     });
   };
 }
+
+// Función para ordenar países
+export async function countriesOrder(orderTarget, criteria) {
+  // Realiza la lógica para ordenar los países según los criterios especificados
+  // Esta función debe devolver los países ordenados según los criterios
+
+  let orderTargetOrdered = [...orderTarget];
+
+  if (criteria.name === 'Ascendent') {
+    orderTargetOrdered.sort((a, b) => (a.name > b.name ? 1 : -1));
+  } else if (criteria.name === 'Descendent') {
+    orderTargetOrdered.sort((a, b) => (a.name < b.name ? 1 : -1));
+  }
+
+  return orderTargetOrdered;
+}
+
+// Función para filtrar países por continente o actividad turística
+export async function filterContinentActivity(orderTarget, criteria) {
+
+  let orderTargetFiltered = [...orderTarget];
+
+  if (criteria.continent) {
+    orderTargetFiltered = orderTargetFiltered.filter(country => country.continent === criteria.continent);
+  }
+
+  // Implementa la lógica para filtrar por otras características (por ejemplo, actividad turística)
+
+  return orderTargetFiltered;
+}
+
 
 //!----------------------------ACTIVITIES----------------------------------------------------------//
 
